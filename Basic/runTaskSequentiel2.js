@@ -3,45 +3,40 @@
 
 /* 
   A script which executes two tasks sequencially.
-  Lets say f
+  Now we have a list of data foreach we need to execute both tasks sequencally:
 */
 
 doTheJob();
 async function doTheJob() {
-  let promise = Promise.resolve();
-  for(let i = 0;i<10;i++) {
-    let result1 = await executeTask1(i);    
-    console.log("--result1=",result1);
-    let result2 = await executeTask2(i);  
-    console.log("--result2=",result2);      
+  for(let i = 0;i<5;i++) {
+    externFunction(i);
   }
 }
 
-async function doTaskSequentiel(task) {
-  let urlId = "some Value";  
-  let result = await delay(1000);
-  if (result > 100) {
-    console.log("1-------doTaskSequentiel="+task);
-    let result2 = await delay(2000);
-    console.log("2-------doTaskSequentiel="+task);
-  } else {
-    LOGGER.info("----doTaskSequentiel: entry exists----" + JSON.stringify(result[0]));
-  }
-  return urlId;
+async function externFunction(i) {
+  let resultTask1 = await executeTask1(i);    
+  console.log("--resultTask1=",resultTask1);
+  let resultTask2 = await executeTask2(i);  
+  console.log("--resultTask2=",resultTask2);     
 }
 
 
-function executeTask1(task) {
-  let time2sleep   = 500;
+
+function executeTask1(data) {
+  let time2sleep   = 100;
+  let result = "result-task1-" + data; 
   return  new Promise((resolve, reject) => {
-    setTimeout(() => resolve(task),time2sleep);
+    setTimeout(() => resolve(result),time2sleep);
   });
 }
 
-function executeTask2(task) {
-  let time2sleep   = 1000;
+
+
+function executeTask2(data) {
+  let time2sleep   = 200;
+  let result = "result-task2-" + data; 
   return  new Promise((resolve, reject) => {
-    setTimeout(() => resolve(task),time2sleep);
+    setTimeout(() => resolve(result),time2sleep);
   });
 }
 
