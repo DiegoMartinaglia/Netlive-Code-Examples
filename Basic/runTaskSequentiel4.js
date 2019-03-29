@@ -6,17 +6,39 @@
   Lets say f
 */
 
-doTheJob();
+doTheJob()
+// doTheJobWay2();
 function doTheJob() {
   let promise = Promise.resolve();
   for(let i = 0;i<3;i++) {      
       promise = promise.then(function(result){
+             console.log("----*******333 result---=",result);
              return externFunction(i);
+      });  
+      console.log("-----loppping ----- "); 
+  }
+}
+
+function doTheJobWay2() {
+  let promise = Promise.resolve("begin");
+  let newPromise = null; 
+  for(let i = 0;i<3;i++) { 
+    console.log("--------------i=",i);     
+      if (i > 0) {
+        console.log("--------------i=",i);
+        promise = newPromise;
+      }
+      console.log("----promise=",promise);
+      promise.then(function(result){
+        console.log("----*******333 result---=",result);
+        newPromise =  externFunction(i);
       });   
+      console.log("-----loppping ----- ")
   }
 }
 
 function externFunction(i) {
+  console.log("----externFunction-----");
   return new Promise(function(resolve,reject) {
     executeTask1(i).then(result1=>{
       console.log("--result1=",result1);
