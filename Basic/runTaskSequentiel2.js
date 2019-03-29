@@ -26,7 +26,7 @@ async function externFunction(data) {
 
 
 function executeTask1(data) {
-  let time2sleep   = 5000;
+  let time2sleep   = 100;
   let result = "result-task1-" + data; 
   return  new Promise((resolve, reject) => {
     setTimeout(() => resolve(result),time2sleep);
