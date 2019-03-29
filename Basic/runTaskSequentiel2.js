@@ -6,7 +6,8 @@
   Now we have a list of data foreach we need to execute both tasks sequencally:
 */
 
-doTheJobWay1();
+doTheJobWay3();
+
 async function doTheJobWay1() {  
   externFunction("Anna").then(result1=>{
     console.log("---resolved with Anna-----");
@@ -24,6 +25,12 @@ async function doTheJobWay2() {
   externFunction("Berta").then(result2=>{
     console.log("----resolved with Berta-----");
   });
+}
+
+
+async function doTheJobWay3() {  
+  let result1 = await externFunction("Anna");  
+  let result2 = await externFunction("Berta");
 }
 
 
