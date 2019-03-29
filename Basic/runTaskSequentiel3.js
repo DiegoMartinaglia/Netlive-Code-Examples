@@ -8,11 +8,11 @@
 
 doTheJob();
 function doTheJob() {
-  let promise = Promise.resolve();
-  for(let i = 0;i<5;i++) {
-    executeTask1(i).then(result1=>{
+  let dataList = ["Anna","Berta"];
+  for(let name of dataList) {
+    executeTask1(name).then(result1=>{
       console.log("--result1=",result1);
-      return executeTask2(i); 
+      return executeTask2(name); 
     }).then(result2=>{
       console.log("--result2=",result2);      
     });     
