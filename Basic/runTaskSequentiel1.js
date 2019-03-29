@@ -7,13 +7,17 @@
 */
 
 doTheJob();
-async function doTheJob() {
-  for(let i = 0;i<5;i++) {
-    let resultTask1 = await executeTask1(i);    
-    console.log("--resultTask1=",resultTask1);
-    let resultTask2 = await executeTask2(i);  
-    console.log("--resultTask2=",resultTask2);      
-  }
+async function doTheJob() { 
+  let result1 = await executeTask1("Anna");    
+  console.log("--resultTask1=",result1);
+  let result2 = await executeTask2("Anna");  
+  console.log("--resultTask2=",result2); 
+  let result3 = await executeTask1("Berta");    
+  console.log("--resultTask1=",result3);
+  let result4 = await executeTask2("Berta");  
+  console.log("--resultTask2=",result4); 
+  console.log("----finished--- ????");    
+   
 }
 
 
